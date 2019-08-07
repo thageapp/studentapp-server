@@ -1,0 +1,23 @@
+{
+  "name": "web-student-app",
+  "version": "1.0.0",
+  "description": "A simple student app",
+  "main": "server/index.js",
+  "scripts": {
+    "dev": "nodemon server/index.js",
+    "start": "node server/index.js"
+  },
+  "author": "Damiano Casula",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mysql2": "^1.6.5",
+    "sequelize": "^5.9.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
+}
