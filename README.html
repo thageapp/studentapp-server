@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <title>Progetto per WeStudents</title>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css?family=Poppins:300,400&display=swap");
+      @import url("client/src/assets/normalize.css");
+
+      body {
+        font-family: "Poppins", sans-serif;
+        padding: 20px calc(20px + 15vw);
+        font-size: 110%;
+      }
+
+      code {
+        font-family: 'Courier New', Courier, monospace;
+      }
+
+      p, li {
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: 300;
+      }
+
+      img {
+        max-width: 100%;
+      }
+
+      @media screen and (max-width: 1000px) {
+        body {
+          padding: 20px calc(15px + 10vw);
+        }
+      }
+
+      @media screen and (max-width: 800px) {
+        body {
+          padding: 15px calc(10px + 5vw);
+        }
+      } 
+
+      @media screen and (max-width: 600px) {
+        body {
+          padding: 12.5px calc(5px + 2.5vw);
+        }
+      } 
+
+      @media screen and (max-width: 400px) {
+        body {
+          padding: 10px 5px;
+        }
+      }
+
+      /* Grid */
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 10px;
+      }
+
+      @media screen and (max-width: 800px) {
+        .grid {
+          grid-template-columns: 1fr;
+          grid-gap: 12.5px;
+        }
+      } 
+    </style>
+  </head>
+  <body>
+    <h1>Applicazione web per WeStudents</h1>
+
+    <h2>Introduzione</h2>
+    <p>
+      Come progetto per il Master in Programmazione Web ho deciso di realizzare
+      un'applicazione web, che faccia da esempio sul come implementare le già esistenti app mobile di WeStudents sul web.
+    </p>
+    <p>
+      Ho scelto di realizzare un progetto per la startup WeStudents perchè il
+      tipo di prodotto che offrono è stato uno strumento fondamentale per
+      gestire la mia vita scolastica durante le scuole superiori.
+    </p>
+    <p>
+      Ho optato per un'applicazione full-stack in modo da comprendere tutte le
+      conoscenze acquisite durante il mio percorso di apprendimento, intrapreso prima e
+      durante le Super Guide di start2impact.
+    </p>
+
+    <h2>Come installare</h2>
+    <h3>Tecnologie</h3>
+    <ul>
+      <li>Node.js 10+</li>
+      <li>NPM o altro package manager per Node.js</li>
+      <li>MySQL 5.7</li>
+    </ul>
+    <h3>Procedura</h3>
+    <ol>
+      <li>Creare un database e un utente per gestirlo e aggiornare i dati nel file <code><a href="server/config/mysql.js" target="_blank" rel="noopener noreferrer">./server/config/mysql.js</a></code>.
+        <pre>
+          CREATE DATABASE westudents;
+          CREATE USER 'westudents_user'@'localhost' IDENTIFIED BY 'password_sicura';
+          ALTER USER 'westudents_user'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password_sicura';
+          GRANT ALL PRIVILEGES ON westudents.* TO 'westudents_user'@'localhost';
+          FLUSH PRIVILEGES;
+        </pre>
+      </li>
+      <li>Eseguire le query contenute nel file <code><a href="create-table-mysql.sql" target="_blank" rel="noopener noreferrer">create-table-mysql.sql</a></code> per creare le tabelle.</li>
+      <li>Stare in questa cartella (<code>web-student-app/</code>).</li>
+      <li>Intallare le dipendenze per il server con il comando <code>npm i</code>.</li>
+      <li>Eseguire il server con il comando <code>npm start</code>.</li>
+      <li>In un altro terminale accedere al client con <code>cd client</code>.</li>
+      <li>Intallare le dipendenze per il client con il comando <code>npm i</code>.</li>
+      <li>Eseguire il client con il comando <code>npm run serve</code> e accedere alla pagina <a href="http://localhost:8080">http://localhost:8080</a>.</li>
+    </ol>
+
+    <h2>Tecnologie utilizzate</h2>
+    <h3>Lato client</h3>
+    <ul>
+      <li><a href="https://developer.mozilla.org/it/docs/Web/HTML" target="_blank" rel="noopener noreferrer">HTML</a>: struttura delle pagine e template di <a href="https://vuejs.org" target="_blank" rel="noopener noreferrer">Vue.js</a>.</li>
+      <li><a href="https://developer.mozilla.org/it/docs/Web/CSS" target="_blank" rel="noopener noreferrer">CSS</a>: stile delle pagine.</li>
+      <li>
+        <a href="https://vuejs.org" target="_blank" rel="noopener noreferrer">Vue.js</a> (<a href="https://developer.mozilla.org/it/docs/Web/JavaScript" target="_blank" rel="noopener noreferrer">JavaScript</a>): costruzione dell'applicazione web lato client, dinamicità delle pagine e gestione delle chiamate all'API lato server con <a href="https://www.npmjs.com/package/axios">axios</a>.
+      </li>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API" target="_blank" rel="noopener noreferrer">WebStorage API</a>: utilizzata per salvare i dati della sessione sul browser.
+      </li>
+    </ul>
+    <h3>Lato server</h3>
+    <ul>
+      <li><a href="https://nodejs.org/it" target="_blank" rel="noopener noreferrer">Node.js</a> (<a href="https://developer.mozilla.org/it/docs/Web/JavaScript" target="_blank" rel="noopener noreferrer">JavaScript</a>): costruzione dell'applicazione web lato server.</li>
+      <li><a href="https://expressjs.com/" target="_blank" rel="noopener noreferrer">Express</a>: creazione dellaRESTful API.
+      <li><a href="https://jwt.io/" target="_blank" rel="noopener noreferrer">JWT</a>: gestione dei token per le sessioni e la verifica dell'<em>ownership</em> delle risorse.
+      <li><a href="http://docs.sequelizejs.com/" target="_blank" rel="noopener noreferrer">Sequelize</a>: gestione delle chiamate al database.</li>
+      <li><a href="https://www.mysql.com/" target="_blank" rel="noopener noreferrer">MySQL</a>: DBMS per database relazionali per salvare in modo permanente i dati dell'applicazione.</li>
+    </ul>
+
+    <h2>Progettazione del database</h2>
+    <p>Per progettare il database ho utilizzato lo strumento gratuito online <a href="https://app.dbdesigner.net/" target="_blank" rel="noopener noreferrer">DbDesigner.net</a>. Il progetto logico è il seguente:</p>
+    <img src="db-logic.png" alt="DB logic diagram">
+
+    <footer>
+      <p>Damiano Casula, 2019</p>
+    </footer>
+  </body>
+</html>
